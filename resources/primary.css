@@ -2,6 +2,61 @@
 
 body {margin:0;padding:0;}
 
+h1, h2 {
+	font-family: WorkSansMedium;
+	color: var(--white);
+	margin: 5px;
+}
+
+a:not(nav a) {
+	text-decoration: underline;
+	color: var(--no-hover-click);
+	cursor: pointer;
+}
+a:not(nav a):hover {
+	color: var(--on-hover-click);
+	text-decoration-style: double;
+}
+
+/* NAV */
+nav {
+	z-index:99;
+	padding-top:0.2%;
+	padding-bottom:0.2%;
+	margin:0;
+	width:100%;
+	display:grid;
+	position:fixed;
+	top:0;
+	left:0;
+	background-color: var(--sky-blue);
+	grid-template-columns: 20% 80%;
+	column-gap:20px;
+	height:4rem;
+}
+nav h1 {
+	font-size: 2rem;
+	text-decoration: none;
+	margin-left:10px;
+}
+#navleft {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	text-decoration: none;
+}
+#navleft a {
+	text-decoration: none;
+	color: var(--white);
+}
+#navleft a:hover {
+	text-decoration: none;
+	color: var(--white);
+}
+#navleft a:focus {outline:none;}
+#navlogo {max-height: 3.6rem;}
+
 /* NOSCRIPT */
 noscript {
 	position: fixed;

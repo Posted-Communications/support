@@ -49,10 +49,6 @@ function loadStatics(navType) {
         
         document.getElementById("navleft").innerHTML +=
         '<a href="/index.html" draggable="false"><img src="/resources/favicon.png" alt="logo" id="navlogo"><div id="header-wrapper"><h1>Posted</h1><h2>Share your life</h2></div></a>'
-        document.getElementById("navcenter").innerHTML +=
-        '<form method="GET" style="flex-basis:100%;"><div title="currently inoperable" class="searchform"><input name="search" type="text" placeholder="Search Posted" autocorrect="off" autocomplete="off" id="search" aria-label="search"></div></form>'
-        document.getElementById("navright").innerHTML +=
-        '<a href="/auth/login.html" class="big button">Log in /<wbr> Sign up</a>'
     } else if (navType == 1) {
         document.getElementById("navleft").innerHTML +=
         '<a href="/index.html"><img src="/resources/favicon.png" alt="logo" id="navlogo"><div id="header-wrapper"><h1>Posted</h1><h2>Share your life</h2></div></a>'
