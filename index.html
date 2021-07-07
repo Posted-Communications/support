@@ -35,6 +35,13 @@
 			width:0%;
 			transition: cubic-bezier(0.2, 0.2, 0.2, 1) 20ms;
 		}
+		iframe {
+			border:none;
+			width:100%;
+			height:40vh;
+			background-color: var(--dark-white);
+			border-radius:20px;
+		}
 	</style>
 </head>
 <body>
@@ -87,6 +94,10 @@
 							<p id="update-progress_label">94%</p>
 						</div>
 					</div>
+				</div>
+				<div class="info-card">
+					<h1>Recent Update Notes</h1>
+					<iframe src="/change_log.html?export=recent"></iframe>
 				</div>
 			</div>
 		</div>

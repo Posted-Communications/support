@@ -235,17 +235,6 @@
 		}
 	</style>
 	<script>
-		function start() {
-			var lastUpdate = 'TBD';
-			var version = 'v0.1.13';
-			console.log("This is the change log.");
-			console.log("Last updated: " + lastUpdate + ' / ' + version);
-			console.log("Current Posted version: " + version + " as of " + lastUpdate);
-			document.getElementById("version").innerText = version;
-			document.getElementById("header-version").innerText = version;
-			document.getElementById("lastUpdate").innerText = lastUpdate;
-		}
-
 		function toggleDropdown(e, s) {
 			var element = document.getElementById(`${e}-dropdown`);
 			var title = document.getElementById(`${e}-droptitle`);
@@ -261,7 +250,7 @@
 		}
 	</script>
 </head>
-<body onload="start()">
+<body>
 	<header>
 		<h1>Posted - Change Log</h1>
 		<h2>Current version: <span style="text-decoration:underline;" id="header-version">_</span></h2>
@@ -538,5 +527,56 @@
 		<hr class="short">
 		<a id="jumptop" href="#" aria-label="return to page top" title="return to page top">&#708;</a>
 	</main>
+	<script>
+		var lastUpdate = 'TBD';
+		var version = 'v0.1.13';
+		console.log("This is the change log.");
+		console.log("Last updated: " + lastUpdate + ' / ' + version);
+		console.log("Current Posted version: " + version + " as of " + lastUpdate);
+		document.getElementById("version").innerText = version;
+		document.getElementById("header-version").innerText = version;
+		document.getElementById("lastUpdate").innerText = lastUpdate;
+	</script>
+	<script>
+		const query = window.location.search;
+		const url = new URLSearchParams(query);
+		var exportNotes = url.get('export');
+		console.log(`Notes to Export: ${exportNotes}`)
+		
+		const recentRelease = version.replace(/\./g,'-').slice(1);
+		console.log(`Recent Release: ${recentRelease}`);
+		
+		var notes 
+		if (exportNotes == 'recent') {
+			notes = document.getElementById(recentRelease);
+		} else if (exportNotes != null) {
+			notes = document.getElementById(exportNotes);
+		}
+		if (exportNotes != null) {
+			console.log(`Notes: ${notes}`)
+			replacePage(notes)
+		} else {
+			console.log("No notes to export");
+		}
+		
+
+		function replacePage(n) {
+			document.getElementsByTagName('header')[0].remove();
+			document.getElementsByTagName('nav')[0].remove();
+			document.getElementsByTagName('main')[0].remove();
+			for (let index = 0; index < 2; index++) {
+				document.getElementsByTagName('hr')[index].style.display = 'none';				
+			}
+			
+			var element = document.createElement('main')
+			element.setAttribute('id', 'returnNotes');
+			document.body.appendChild(element)
+			document.getElementById('returnNotes').appendChild(n);
+			document.getElementsByClassName('header')[0].style.background = 'none';
+			document.getElementsByClassName('header')[0].style.top = '0';
+			document.getElementsByClassName('header')[0].style.position = 'relative';
+			console.log("Append element");
+		}
+	</script>
 </body>
 </html>
