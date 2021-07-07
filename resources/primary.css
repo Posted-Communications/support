@@ -1,0 +1,48 @@
+@import url(./meta.css);
+
+body {margin:0;padding:0;}
+
+/* NOSCRIPT */
+noscript {
+	position: fixed;
+	width: 100%;
+	display: block;
+	height: 100vh;
+	z-index: 999;
+	background-color: var(--black-blue);
+	top: 0;
+	left: 0;
+}
+
+.noscript-container {
+	display: block;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	text-align: center;
+	color: var(--white);
+}
+
+.noscript-badge {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	width: 100%;
+	flex-direction: row;
+	gap: 1vw;
+}
+
+.noscript-badge h1 {font-size: 4.5vw !important;}
+.noscript-badge img {width: 12%;}
+.noscript-container hr {
+	width: 90%;
+	background-color: var(--white);
+	border-radius: 10%;
+	height: 0.2vh;
+	margin-top: 2.5vh;
+	margin-bottom: 2.5vh;
+}
+.noscript-container h1 {font-family: WorkSansMedium;font-size: 3vw;}
+.noscript-container p {font-family: WorkSans;font-size: 1.5vw;}
