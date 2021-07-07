@@ -1,6 +1,10 @@
 @import url(./meta.css);
 
-body {margin:0;padding:0;}
+body {
+	margin:0;
+	padding:0;
+	background-color:var(--dark-white)
+}
 
 h1, h2 {
 	font-family: WorkSansMedium;
@@ -33,6 +37,7 @@ nav {
 	grid-template-columns: 20% 80%;
 	column-gap:20px;
 	height:4rem;
+	border-bottom:6px solid var(--light-dark-blue);
 }
 nav h1 {
 	font-size: 2rem;

@@ -1,20 +1,20 @@
 :root {
 	font-size:18px;
 
-   /* Colors */
+	/* Colors */
 	--black-blue:rgb(4,17,39);
 	--light-blue:rgb(25,186,235);
 	--light-dark-blue:rgb(0,81,168);
-   --no-hover-click:rgb(0,140,255);
-   --on-hover-click:rgb(64,64,255);
-   --input-gray:rgb(64,64,64);
-   --dark-white:rgb(219,219,219);
-   --white:rgb(255,255,255);
-   --black:rgb(0,0,0);
-   --blacker-blue:rgb(0,26,70);
-   --border-gray:rgb(175,175,175);
-   --middle-gray:rgb(134,134,134);
-   --sky-blue:rgb(74, 150, 250);
+	--no-hover-click:rgb(0,140,255);
+	--on-hover-click:rgb(64,64,255);
+	--input-gray:rgb(64,64,64);
+	--dark-white:rgb(219,219,219);
+	--white:rgb(255,255,255);
+	--black:rgb(0,0,0);
+	--blacker-blue:rgb(0,26,70);
+	--border-gray:rgb(175,175,175);
+	--middle-gray:rgb(134,134,134);
+	--sky-blue:rgb(74, 150, 250);
 }
 
 /* 
@@ -22,14 +22,14 @@
 * Fonts used under Open Font Liscense. Retrieved from Google Fonts
 */
 @font-face{
-   font-family:WorkSansMedium;
-   src:url("WorkSans-Medium.ttf");
+	font-family:WorkSansMedium;
+	src:url("WorkSans-Medium.ttf");
 }
 @font-face{
-   font-family:WorkSans;
-   src:url("WorkSans-Variable.ttf");
+	font-family:WorkSans;
+	src:url("WorkSans-Variable.ttf");
 }
 @font-face{
-   font-family:MontserratLight;
-   src:url("Montserrat-Light.ttf");
+	font-family:MontserratLight;
+	src:url("Montserrat-Light.ttf");
 }
