@@ -21,15 +21,15 @@
 * Fonts 
 * Fonts used under Open Font Liscense. Retrieved from Google Fonts
 */
-@font-face{
+@font-face {
 	font-family:WorkSansMedium;
 	src:url("WorkSans-Medium.ttf");
 }
-@font-face{
+@font-face {
 	font-family:WorkSans;
 	src:url("WorkSans-Variable.ttf");
 }
-@font-face{
+@font-face {
 	font-family:MontserratLight;
 	src:url("Montserrat-Light.ttf");
 }

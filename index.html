@@ -6,6 +6,36 @@
 	<title>Posted Support</title>
 	<link rel="icon" href="/resources/favicon.png">
 	<link rel="stylesheet" href="/resources/primary.css">
+	<style>
+		.info-card {
+			background-color: var(--light-blue);
+			padding:2%;
+			width:100%;
+			border-radius: 20px;
+		}
+		.info-card a {
+			color:var(--blacker-blue) !important;
+		}
+		.progress-bar-container {
+			width:100%;
+			border-radius:20px;
+			background-color:rgb(160, 160, 160);
+			height:3rem;
+			margin-top:20px;
+			margin-bottom:20px;
+		}
+		.progress-bar {
+			position:relative;
+			display:flex;
+			height:100%;
+			justify-content: flex-end;
+			align-items: center;
+			background-color:rgb(0, 214, 0);
+			border-radius:20px;
+			width:0%;
+			transition: cubic-bezier(0.2, 0.2, 0.2, 1) 20ms;
+		}
+	</style>
 </head>
 <body>
 	<noscript>
@@ -29,5 +59,68 @@
 			<a href="./change_log.html">Change Log</a>
 		</div>
 	</nav>
+	<main>
+		<div class="maincon">
+			<div id="feed">
+				<div class="info-card">
+					<h1>Welcome to Posted Support!</h1>
+					<h2>Current Site Statistics:</h2>
+					<ul>
+						<li><b>Phase: </b> <a href="/change_log.html#development_v0-1-x">Development v0.1.x (Front-End)</a></li>
+						<li><b>Version: </b> <a href="/change_log.html#0-1-13">v0.1.13</a></li>
+						<li><b>Progression status: </b> Progressing as expected!</li>
+						<li><b>Estimated release date: </b> Q2 2022<sub>1</sub></li>
+					</ul>
+					<p class="footnote"><sub>1</sub>This will get more precise as Posted nears completion</p>
+				</div>
+				<div class="info-card">
+					<h1>Progression to v0.2</h1>
+					<div class="progress-bar-container">
+						<div class="progress-bar" style id="next-phase-progress">
+							<p id="next-phase-progress_label">98%</p>
+						</div>
+					</div>
+					<hr>
+					<h1>Progression to v0.1.13 Completion</h1>
+					<div class="progress-bar-container">
+						<div class="progress-bar" id="update-progress">
+							<p id="update-progress_label">94%</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script>
+		var i = 0;
+		const phaseProgress = {
+			bar: document.getElementById('next-phase-progress'),
+			label: document.getElementById('next-phase-progress_label'),
+			amount: document.getElementById('next-phase-progress_label').innerText.slice(0,-1)
+		}
+		const updateProgress = {
+			bar: document.getElementById('update-progress'),
+			label: document.getElementById('update-progress_label'),
+			amount: document.getElementById('update-progress_label').innerText.slice(0,-1)
+		}
+		phaseProgress.label.innerText = '0%';
+		updateProgressBar();
+		function updateProgressBar() {
+			setTimeout(() => {
+				if (i <= phaseProgress.amount) {
+					phaseProgress.label.innerText = i + '%';
+					phaseProgress.bar.style.width = i + '%';
+				}
+				
+				if (i <= updateProgress.amount) {
+					updateProgress.label.innerText = i + '%';
+					updateProgress.bar.style.width = i + '%';
+				}
+
+				i++;
+				if (i <= 100) {updateProgressBar()}
+			},10)
+		}
+	</script>
 </body>
 </html>
