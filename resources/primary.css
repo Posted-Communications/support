@@ -6,6 +6,12 @@ body {
 	background-color:var(--dark-white)
 }
 
+p {
+	font-family: WorkSans;
+	color: var(--black);
+	margin: 5px;
+}
+
 h1, h2 {
 	font-family: WorkSansMedium;
 	color: var(--white);
@@ -61,6 +67,19 @@ nav h1 {
 }
 #navleft a:focus {outline:none;}
 #navlogo {max-height: 3.6rem;}
+#navright {
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+}
+#navright a {
+	color:var(--white);
+	text-decoration:underline;
+	font-family: WorkSans;
+	font-size:1rem;
+	text-decoration-color: var(--on-hover-click);
+	text-decoration-thickness: 3px;
+}
 
 /* NOSCRIPT */
 noscript {
