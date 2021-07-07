@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="cache-control" content="no-store">
+	<title>Posted: Share your life | Change Log</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="icon" href="resources/favicon.png">
+	<meta name="description" content="Change log for Posted">
+	<style>
+		@import url(resources/meta.css);
+
+		html {scroll-behavior: smooth;}
+
+		body {
+			margin-left: 40px;
+			margin-top: 5px;
+			margin-right: 40px;
+			margin-bottom: 30px;
+		}
+
+		h1 {
+			font-family: WorkSansMedium;
+			font-size: 1.8rem;
+			margin-top: 1%;
+			margin-bottom: 1%;
+		}
+
+		h2 {
+			font-family: WorkSans;
+			font-size: 1.2rem;
+			margin-bottom: 2px;
+		}
+
+		h3 {
+			font-family: WorkSans;
+			font-size: 1.05rem;
+			margin-top: 2px;
+			margin-bottom: 2px;
+		}
+
+		h4 {
+			font-family: WorkSans;
+			font-weight: 100;
+			font-size: 0.9rem;
+			margin-top: 6px;
+			margin-bottom: 2px;
+			text-decoration: underline;
+		}
+
+		h4::before {
+			content: "Released: ";
+			font-weight: bold;
+			text-decoration: none !important;
+		}
+
+		.subheading {
+			font-size:1.4rem;
+		}
+
+		.header {
+			position: sticky;
+			background-color: white;
+			z-index:99;
+		}
+
+		.header:is(h1) {
+			top:0;
+			height:40px;
+			z-index:99;
+		}
+		.header:is(.subheading) {
+			top:40px;
+			height:30px;
+			z-index:98;
+		}
+		.header:is(h2) {
+			top:70px;
+			z-index:97;
+		}
+
+		p {
+			font-family: MontserratLight;
+		}
+
+		li {
+			font-family: MontserratLight;
+			font-size: 0.9rem;
+		}
+
+		.long {
+			width: 100%;
+			background-color: black;
+			height: 7px;
+		}
+
+		.short {
+			width: 100%;
+			background-color: #5a5a5a;
+			height: 3px;
+		}
+
+		article {
+			margin-top: 25px;
+			border-top:2px dotted black;
+			display:block;
+			width:80%;
+		}
+
+		article:last-of-type {
+			border-bottom:2px dotted rgb(32, 32, 32);
+			margin-bottom: 4px;
+		}
+
+		section {
+			border-top:3px dashed rgb(20,20,20);
+			border-bottom:3px dashed rgb(20,20,20);
+		}
+		
+		section > section {
+			border-top:2px dashed rgb(20,20,20);
+			border-bottom:2px dashed rgb(20,20,20);
+			margin-left:2vw;
+			margin-right:2vw;
+			margin-bottom:4px;
+		}
+
+		header h1 {
+			font-size: 2rem;
+		}
+
+		header h2 {
+			font-size: 1.5rem;
+		}
+
+		header p {
+			font-size: 0.9rem;
+		}
+
+		a {
+			text-decoration: underline;
+			color: #008cff;
+		}
+
+		a:hover {
+			color: #0000ff;
+			text-decoration-style: double;
+		}
+
+		code {
+			font-family: monospace;
+			background-color: rgb(172, 172, 172);
+			display: inline;
+			padding: 2px;
+			border-radius: 3px;
+			color: black;
+		}
+	</style>
+	<style>
+		section h1 {
+			margin-bottom: 18px;
+		}
+
+		.dropdown-title {
+			font-weight: bold;
+			font-family: WorkSans;
+			font-size: 1.1rem;
+			margin-top: 2px;
+			margin-bottom: 2px;
+			color: black;
+			cursor: pointer;
+			user-select: none;
+   		-ms-user-select: none;
+   		-moz-user-select: none;
+  		 	-webkit-user-select: none;
+		}
+
+		.dropdown-title::before {
+			content: "-"
+		}
+
+		.dropdown-title:hover {
+			color: black;
+		}
+
+		.dropdown {
+			margin-top: 5px;
+		}
+
+		.dropdown ul {
+			display: none;
+		}
+
+		.dropdown-item {
+			color: black;
+		}
+
+		.dropdown-item:hover {
+			color: gray;
+		}
+
+		.dropdown-header {
+			font-weight: 600;
+		}
+	</style>
+	<style>
+		#jumptop {
+			position:fixed;
+			display:block;
+			width:4vw;
+			height:4vw;
+			bottom:1vw;
+			right:1vw;
+			background-color:rgb(82, 82, 82);
+			opacity:0.5;
+			text-align: center;
+			border-radius: 50%;
+			transition:opacity 300ms;
+			color:white;
+			font-size:3.5vw;
+			text-decoration: none;
+		}
+
+		#jumptop:hover {
+			opacity:1;
+			text-decoration: none;
+		}
+
+		@media only screen and (max-width:700px) {
+			#jumptop {
+				width:9.5vw;
+				height:9.5vw;
+				font-size:9vw;
+			}			
+		}
+	</style>
+	<script>
+		function start() {
+			var lastUpdate = 'TBD';
+			var version = 'v0.1.13';
+			console.log("This is the change log.");
+			console.log("Last updated: " + lastUpdate + ' / ' + version);
+			console.log("Current Posted version: " + version + " as of " + lastUpdate);
+			document.getElementById("version").innerText = version;
+			document.getElementById("header-version").innerText = version;
+			document.getElementById("lastUpdate").innerText = lastUpdate;
+		}
+
+		function toggleDropdown(e, s) {
+			var element = document.getElementById(`${e}-dropdown`);
+			var title = document.getElementById(`${e}-droptitle`);
+
+			if (s == 'open') {
+				element.style.display = 'block';
+				title.setAttribute('onclick', `toggleDropdown('${e}', 'close')`);
+			}
+			if (s == 'close') {
+				element.style.display = 'none';
+				title.setAttribute('onclick', `toggleDropdown('${e}', 'open')`);
+			}
+		}
+	</script>
+</head>
+<body onload="start()">
+	<header>
+		<h1>Posted - Change Log</h1>
+		<h2>Current version: <span style="text-decoration:underline;" id="header-version">_</span></h2>
+		<p><b>Please contact Posted Communications (<a href="mailto:posted.communications@gmail.com">posted.communications@gmail.com</a>) with any suggestions or issues.</b></p>
+		<p>Last Updated: <span id="version">_</span> / <span id="lastUpdate">_</span></p>
+		<!-- <p><b><a href="">Return to Posted</a></b></p> -->
+		<p><b>Posted is no longer available while in development phases.</b> A private (invite only) beta will likely begin in a few months, followed by a public beta shortly after.</p>
+	</header>
+	<hr class="short">
+	<nav>
+		<h1>Jump to Section</h1>
+		<div class="dropdown">
+			<a class="dropdown-title" id="development-droptitle" onclick="toggleDropdown('development', 'open')">Development</a>
+			<ul id="development-dropdown">
+				<li><a class="dropdown-item dropdown-header" href="#development">Jump to section "Development"</a></li>
+				<li><a class="dropdown-title" id="development_v0.1.x-droptitle" onclick="toggleDropdown('development_v0.1.x', 'open')">Development v0.1</a>
+					<ul id="development_v0.1.x-dropdown">
+						<li><a class="dropdown-item dropdown-header" href="#development_v0-1.x">Jump to section "Development v0.1.x"</a></li>
+						<li><a class="dropdown-item" href="#0-1-13">v0.1.13</a></li>
+						<li><a class="dropdown-item" href="#0-1-12">v0.1.12</a></li>
+						<li><a class="dropdown-item" href="#0-1-11">v0.1.11</a></li>
+						<li><a class="dropdown-item" href="#0-1-10">v0.1.10</a></li>
+						<li><a class="dropdown-item" href="#0-1-9">v0.1.9</a></li>
+						<li><a class="dropdown-item" href="#0-1-8">v0.1.8</a></li>
+						<li><a class="dropdown-item" href="#0-1-7">v0.1.7</a></li>
+						<li><a class="dropdown-item" href="#0-1-6">v0.1.6</a></li>
+						<li><a class="dropdown-item" href="#0-1-5">v0.1.5</a></li>
+						<li><a class="dropdown-item" href="#0-1-4">v0.1.4</a></li>
+						<li><a class="dropdown-item" href="#0-1-3">v0.1.3</a></li>
+						<li><a class="dropdown-item" href="#0-1-2">v0.1.2</a></li>
+						<li><a class="dropdown-item" href="#0-1-1">v0.1.1</a></li>
+						<li><a class="dropdown-item" href="#0-1-0">v0.1</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<hr class="long">
+	<main>
+		<noscript>
+			<style>
+				body{overflow:hidden;}
+
+				noscript {
+					position: fixed;
+					width: 100%;
+					display: block;
+					height: 100vh;
+					z-index: 999;
+					background-color: rgb(9, 22, 46);
+					top:0;
+					left:0;
+				}
+
+				.noscript-container {
+					display: block;
+					position: absolute;
+					transform: translate(-50%, -50%);
+					top: 50%;
+					left: 50%;
+					text-align: center;
+					color: white;
+				}
+
+				.noscript-badge {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					align-content: center;
+					width: 100%;
+					flex-direction: row;
+					gap: 1vw;
+				}
+
+				.noscript-badge h1 {font-size: 4.5vw !important;}
+
+				.noscript-badge img {width: 12%;}
+
+				.noscript-container hr {
+					width: 90%;
+					background-color: white;
+					border-radius: 10%;
+					height: 0.2vh;
+					margin-top: 2.5vh;
+					margin-bottom: 2.5vh;
+				}
+
+				.noscript-container h1 {
+					font-family: WorkSansMedium;
+					font-size: 3vw;
+				}
+
+				.noscript-container p {
+					font-family: WorkSans;
+					font-size: 1.5vw;
+				}
+			</style>
+			<div class="noscript-container">
+				<div class="noscript-badge">
+					<img alt="posted logo" src="/resources/favicon.png">
+					<h1>Posted</h1>
+				</div>
+				<hr>
+				<h1>This site requires JavaScript!</h1>
+				<p>Make sure you're using a modern browser and have JavaScript enabled!</p>
+			</div>
+		</noscript>
+		<section id="development">
+			<h1 class="header">Development Versions (v0.1.x &amp; v0.2.x)</h1>
+			<ul>
+				<li><code>v0.1.x</code>: main priority of front-end development</li>
+				<li><code>v0.2.x</code>: main priority shifts to back-end development; front-end development continues but is less of a priority</li>
+			</ul>
+			<section id="development_v0-1.x">
+				<h1 class="subheading header">Development v0.1.x</h1>
+				<article id="0-1-13">
+					<h2 class="header">v0.1.13</h2>
+					<h3>CURRENT</h3>
+					<h4>TBD</h4>
+					<ul>
+						<li>Refactor stylesheets</li>
+						<li>Better responisveness</li>
+						<li>Add authentication pages, all are non-functional as of now</li>
+						<ul>
+							<li>Add create account page</li>
+							<li>Add login page</li>
+							<li>Add password reset page (only basic HTML structure)</li>
+						</ul>
+						<li>Images are now embedded as backgrounds for a <code>div</code> allowing for images to be centered and resized</li>
+						<li>Clicking on an image in a post (image preview) will open the full size image in the image viewer</li>
+						<li>Regarding code management:</li>
+						<ul>
+							<li><a href="https://github.com/Posted-Communications">Posted Communications</a> is now an official GitHub organization</li>
+							<li>Posted site repo has been transferred to the Posted Communications organization</li>
+							<li>Repo has been made private ahead of bigger changes</li>
+							<li>Current Netlify preview will be <ins>permanently</ins> going offline when v0.2 is released.</li>
+						</ul>
+						<li>Posted support site has been created</li>
+					</ul>
+				</article>
+				<article id="0-1-12">
+					<h2 class="header">v0.1.12</h2>
+					<h4>June 11, 2021</h4>
+					<ul>
+						<li>Not a big update</li>
+						<li>Begin adding <code>og:meta</code> (Open-Graph) <code>meta</code> tags to documents</li>
+						<li>Hard at work behind the scenes for the first v0.2 release (coming soon)</li>
+						<ul>
+							<li>Primary script (fetching files)</li>
+							<li>Error page</li>
+							<li>Header tags for all documents</li>
+						</ul>
+						<li>Final v0.1 update will include some refactoring of stylesheets, along with a few additions
+							<br>(end of v0.1.x updates is NOT equal to the end of front-end development for Posted, I will continue to work on it, but my primary focus will be the backend)</li>
+					</ul>
+				</article>
+				<article id="0-1-11">
+					<h2 class="header">v0.1.11</h2>
+					<h4>May 26, 2021</h4>
+					<ul>
+						<li>Add responsiveness to profile template</li>
+						<li>Refactor navbar (again) for better responsiveness (I swear I'm not obsessive)</li>
+						<li>Re-enable the version-alert notifcation</li>
+					</ul>
+				</article>
+				<article id="0-1-10">
+					<h2 class="header">v0.1.10</h2>
+					<h4>May 25, 2021</h4>
+					<ul>
+						<li>Templates for the posts (letters) and profiles</li>
+						<li>Add official color scheme; official "press" page coming soon</li>
+						<li>Add <code>prototyping</code> branch for the purpose of testing scripts and manually creating and modifying posts, user profiles, and other site content
+							<br>(this branch is isolated from the rest of the site, and once I add a user-database system these tests will not interfere with the main)</li>
+						<li>Also, this site has now undergone over 10 updates! Here's to many more updates as Posted becomes the next social media platform!</li>
+					</ul>
+				</article>
+				<article id="0-1-9">
+					<h2 class="header">v0.1.9</h2>
+					<h4>May 21, 2021</h4>
+					<ul>
+						<li>Added stylings to support posts</li>
+						<li>Add elements to support images in posts</li>
+						<li>Next update should (hopefully) allow parsing of Open-Graph <code>meta (og:meta)</code> tags</li>
+						<li>Next update will include pages for posts and user profiles</li>
+						<li>Added <code>noscript</code> elements and stylings</li>
+					</ul>
+				</article>
+				<article id="0-1-8">
+					<h2 class="header">v0.1.8</h2>
+					<h4>May 20, 2021</h4>
+					<ul>
+						<li>Refactor some of the stylesheets, adjust stylings for slightly better functionality</li>
+						<li><code>start.js</code> now loads with the page and no longer loads with an <code>onload</code> attribute in the <code>body</code> element</li>
+						<li>Add functional dropdown menu to jump to sections on change log</li>
+						<li>Change log now updates all version information through variables and DOM manipulation scripts</li>
+					</ul>
+				</article>
+				<article id="0-1-7">
+					<h2 class="header">v0.1.7</h2>
+					<h4>April 13, 2021</h4>
+					<ul>
+						<li>Actually add the hyperlink to the homepage to the logo on the navbar, like I was supposed to do in <a href="#0-1-6">v0.1.6</a></li>
+						<li>Header and footer are now added via JavaScript using the <code>start.js</code> file; theoretically this will make webpages smaller and easier to make.</li>
+					</ul>
+				</article>
+				<article id="0-1-6">
+					<h2 class="header">v0.1.6</h2>
+					<h4>April 11, 2021</h4>
+					<ul>
+						<li>Add footer</li>
+						<ul>
+							<li>Add a direct link to change log</li>
+							<li>Add a direct link to issue reporter/suggestion box</li>
+						</ul>
+						<li>Change the way main content is centered</li>
+						<li>Add hyperlink to the homepage to the logo on the navbar</li>
+					</ul>
+				</article>
+				<article id="0-1-5">
+					<h2 class="header">v0.1.5</h2>
+					<h4>April 10, 2021</h4>
+					<ul>
+						<li>Reprogram the entire navbar to better work on mobile and in general</li>
+						<li>Add an easter egg to the console :)</li>
+						<li>Add this change log</li>
+					</ul>
+				</article>
+				<article id="0-1-4">
+					<h2 class="header">v0.1.4</h2>
+					<h4>April 10, 2021</h4>
+					<ul>
+						<li>Add header</li>
+						<li>Modify responsiveness slightly</li>
+						<li>Add responsiveness for header</li>
+					</ul>
+				</article>
+				<article id="0-1-3">
+					<h2 class="header">v0.1.3</h2>
+					<h4>April 4, 2021</h4>
+					<ul>
+						<li>Take 8 attempts to make the site look good on mobile (tested using iPhone 11, iOS 14.4.1)</li>
+						<li>Change version naming (this is now in the <code>Development</code> version phase, not the <code>Beta</code> version phase)</li>
+						<li>Add change log</li>
+					</ul>
+				</article>
+				<article id="0-1-2">
+					<h2 class="header">v0.1.2</h2>
+					<h4>April 4, 2021</h4>
+					<ul>
+						<li>Update stylesheet for better responsiveness</li>
+						<li>Add new logo by Tristawesomeness#8679 on Discord</li>
+					</ul>
+				</article>
+				<article id="0-1-1">
+					<h2 class="header">v0.1.1</h2>
+					<h4>April 4, 2021</h4>
+					<ul>
+						<li>Add notification for developmental features and issue/suggestion reporting on page startup</li>
+					</ul>
+				</article>
+				<article id="0-1-0">
+					<h2 class="header">v0.1</h2>
+					<h4>April 4, 2021</h4>
+					<ul>
+						<li>Add initial stylesheet for navbar</li>
+						<li>Add basic responisveness</li>
+						<li>Add resources</li>
+						<li>Basic navbar</li>
+					</ul>
+				</article>
+			</section>
+		</section>
+		<hr class="short">
+		<a id="jumptop" href="#" aria-label="return to page top" title="return to page top">&#708;</a>
+	</main>
+</body>
+</html>
