@@ -40,6 +40,20 @@
 	<script>
 		var output = {};
 		var input = {};
+
+		const orientation = {
+			screen: function() {
+				if (screen.width > screen.height) {return 'Landscape'}
+				if (screen.width < screen.height) {return 'Portrait'}
+				if (screen.width == screen.height) {return 'Square'}
+			},
+			browser: function() {
+				if (window.innerWidth > window.innerHeight) {return 'Landscape'}
+				if (window.innerWidth < window.innerHeight) {return 'Portrait'}
+				if (window.innerWidth == window.innerHeight) {return 'Square'}
+			}
+		}
+
 		function getStats() {
 			const d = new Date();
 			output = {
@@ -50,7 +64,8 @@
 					aHeight: document.getElementById('aheight'),
 					ratio: document.getElementById('aspect-ratio'),
 					aRatio: document.getElementById('a-aspect-ratio'),
-					orientation: document.getElementById('orientation')
+					screenOrientation: document.getElementById('screen-orientation'),
+					browserOrientation: document.getElementById('browser-orientation')
 				},
 				device: {
 					browser: document.getElementById('browser'),
@@ -58,10 +73,6 @@
 					deviceType: document.getElementById('deviceType'),
 					online: document.getElementById('online'),
 				},
-				meta: {
-					time: null,
-					date: null
-				}
 			}
 			input = {
 				screen: {
@@ -71,7 +82,8 @@
 					aHeight: window.innerHeight,
 					ratio: screen.width / screen.height,
 					aRatio: screen.availWidth / screen.availHeight,
-					orientation: orientation()
+					screenOrientation: orientation.screen(),
+					browserOrientation: orientation.browser()
 				},
 				device: {
 					browser: navigator.userAgent,
@@ -87,12 +99,6 @@
 			return;
 		}
 		
-		function orientation() {
-			if (screen.width > screen.height) {return 'Landscape'}
-			if (screen.width < screen.height) {return 'Portrait'}
-			if (screen.width == screen.height) {return 'Square'}
-		}
-
 		function stats() {
 			var status = document.getElementById('status');
 			status.innerText = 'Gathering data...';
@@ -110,7 +116,8 @@
 			output.screen.aHeight.innerText = input.screen.aHeight;
 			output.screen.ratio.innerText = input.screen.ratio;
 			output.screen.aRatio.innerText = input.screen.aRatio;
-			output.screen.orientation.innerText = input.screen.orientation;
+			output.screen.screenOrientation.innerText = input.screen.screenOrientation;
+			output.screen.browserOrientation.innerText = input.screen.browserOrientation;
 
 			//DEVICE
 			output.device.browser.innerText = input.device.browser;
@@ -122,7 +129,7 @@
 			`SCREEN: Width: width:${input.screen.width}px; availWidth:${input.screen.aWidth}px; `+
 			`height:${input.screen.height}px; availHeight:${input.screen.aHeight}px; `+
 			`aspectRatio:${input.screen.ratio}; availableAspectRatio:${input.screen.aRatio}; ` +
-			`orientation:${input.screen.orientation};\r\nDEVICE: `+
+			`screenOrientation:${input.screen.screenOrientation}; browserOrientation:${input.screen.browserOrientation}\r\nDEVICE: `+
 			`browserVersion:${input.device.browser}; browserName:${input.device.browserName};`+
 			`platform:${input.device.deviceType}; online:${input.device.online};`+
 			`\r\nMETA: date:${input.meta.date}; time:${input.meta.time};`
@@ -154,7 +161,8 @@
 					<p><b>Available Height in Browser: </b><span id="aheight"></span>px</p>
 					<p><b>Aspect Ratio (W/H): </b><span id="aspect-ratio"></span></p>
 					<p><b>Available Aspect Ratio (W/H): </b><span id="a-aspect-ratio"></span></p>
-					<p><b>Orientation: </b><span id="orientation"></span></p>
+					<p><b>Screen Orientation: </b><span id="screen-orientation"></span></p>
+					<p><b>Browser Orientation: </b><span id="browser-orientation"></span></p>
 					<h2>Device Specifications:</h2>
 					<p><b>Browser: </b><span id="browser"></span></p>
 					<p><b>Browser Name: </b><span id="browserName"></span></p>
