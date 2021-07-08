@@ -7,6 +7,12 @@
 	<link rel="icon" href="/resources/favicon.png">
 	<link rel="stylesheet" href="/resources/primary.css">
 	<style>
+		.announcement {
+			background-color: var(--blacker-blue);
+			padding:2%;
+			width:96%;
+			border-radius: 20px;
+		}
 		.info-card {
 			background-color: var(--light-blue);
 			padding:2%;
@@ -16,7 +22,7 @@
 		.info-card a {
 			color:var(--light-dark-blue) !important;
 		}
-		.info-card * {
+		.info-card *, .announcement * {
 			color:white;
 		}
 		.progress-bar-container {
@@ -74,12 +80,21 @@
 	<main>
 		<div class="maincon">
 			<div id="feed">
+				<div class="announcement">
+					<h1>Posted v0.1.13 is finished!</h1>
+					<p>Without skipping a beat, I'm getting straight to work on v0.1.14!</p>
+					<p>v0.1.14 will (hopefully) be the last update of the v0.1.x series, allowing me to progress into full-time development of the back-end!
+						This will unfortunately mean that Posted will <u>permanently go offline (until testing begins)</u> in a few weeks.
+						<br>
+						By the way, I'll be updates in the form of "blog posts" to the support site soon, so development should become a lot more transparent!
+					</p>
+				</div>
 				<div class="info-card">
 					<h1>Welcome to Posted Support!</h1>
 					<h2>Current Site Statistics:</h2>
 					<ul>
 						<li><b>Phase: </b> <a href="/change_log.html#development">Development</a> <a href="/change_log.html#development_v0-1-x">v0.1.x (Front-End)</a></li>
-						<li><b>Version: </b> <a href="/change_log.html#0-1-13">v0.1.12</a></li>
+						<li><b>Version: </b> <a href="/change_log.html#0-1-13">v0.1.13</a></li>
 						<li><b>Progression status: </b> Progressing as expected!</li>
 						<li><b>Estimated release date: </b> Q2 2022<sub>1</sub></li>
 					</ul>
@@ -93,10 +108,10 @@
 						</div>
 					</div>
 					<hr>
-					<h1>Progression to v0.1.13 Completion</h1>
+					<h1>Progression to v0.1.14 Completion</h1>
 					<div class="progress-bar-container">
 						<div class="progress-bar" id="update-progress">
-							<p id="update-progress_label">94%</p>
+							<p id="update-progress_label">2%</p>
 						</div>
 					</div>
 				</div>

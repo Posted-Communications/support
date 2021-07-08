@@ -155,6 +155,11 @@
 			border-radius: 3px;
 			color: black;
 		}
+		@media only screen and (max-width:700px) {
+			.header:is(h1) {height:80px;}
+			.header:is(.subheading) {top:80px;}
+			.header:is(h2) {top:110px;}
+		}
 	</style>
 	<style>
 		section h1 {
@@ -381,8 +386,8 @@
 				<h1 class="subheading header">Development v0.1.x</h1>
 				<article id="0-1-13">
 					<h2 class="header">v0.1.13</h2>
-					<h4>TBD</h4>
-					<h3>UPCOMING (not released)</h3>
+					<h4>July 7, 2021</h4>
+					<h3>Current</h3>
 					<ul>
 						<li>Refactor stylesheets</li>
 						<li>Better responisveness</li>
@@ -407,7 +412,6 @@
 				<article id="0-1-12">
 					<h2 class="header">v0.1.12</h2>
 					<h4>June 11, 2021</h4>
-					<h3>CURRENT</h3>
 					<ul>
 						<li>Not a big update</li>
 						<li>Begin adding <code>og:meta</code> (Open-Graph) <code>meta</code> tags to documents</li>
@@ -541,8 +545,8 @@
 		<a id="jumptop" href="#" aria-label="return to page top" title="return to page top">&#708;</a>
 	</main>
 	<script>
-		var lastUpdate = 'June 11, 2021';
-		var version = 'v0.1.12';
+		var lastUpdate = 'July 7, 2021';
+		var version = 'v0.1.13';
 		console.log("This is the change log.");
 		console.log("Last updated: " + lastUpdate + ' / ' + version);
 		console.log("Current Posted version: " + version + " as of " + lastUpdate);
