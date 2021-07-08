@@ -66,9 +66,9 @@
 			input = {
 				screen: {
 					width: screen.width,
-					aWidth: screen.availWidth,
+					aWidth: window.innerWidth,
 					height: screen.height,
-					aHeight: screen.availHeight,
+					aHeight: window.innerHeight,
 					ratio: screen.width / screen.height,
 					aRatio: screen.availWidth / screen.availHeight,
 					orientation: orientation()
@@ -89,7 +89,7 @@
 		
 		function orientation() {
 			if (screen.width > screen.height) {return 'Landscape'}
-			if (screen.width < screen.height) {return 'Landscape'}
+			if (screen.width < screen.height) {return 'Portrait'}
 			if (screen.width == screen.height) {return 'Square'}
 		}
 
@@ -149,9 +149,9 @@
 					<br>
 					<h2>Screen Specifications:</h2>
 					<p><b>Width: </b><span id="width"></span>px</p>
-					<p><b>Available Width: </b><span id="awidth"></span>px</p>
+					<p><b>Available Width in Browser: </b><span id="awidth"></span>px</p>
 					<p><b>Height: </b><span id="height"></span>px</p>
-					<p><b>Available Height: </b><span id="aheight"></span>px</p>
+					<p><b>Available Height in Browser: </b><span id="aheight"></span>px</p>
 					<p><b>Aspect Ratio (W/H): </b><span id="aspect-ratio"></span></p>
 					<p><b>Available Aspect Ratio (W/H): </b><span id="a-aspect-ratio"></span></p>
 					<p><b>Orientation: </b><span id="orientation"></span></p>
@@ -166,7 +166,7 @@
 					<p><b>PLEASE SEND THIS DATA TO POSTED!</b></p>
 					<p>Please copy the data below and do one of the following:</p>
 					<ul>
-						<li>Create an issue on the Posted Support GitHub repository using the "Client Information Report" template</li>
+						<li><a href="https://github.com/Posted-Communications/support/issues/new?assignees=&labels=data-report&template=client-information-report.md&title=Client+Information+Report" target="_blank">Create an issue</a> on the Posted Support GitHub repository using the "Client Information Report" template</li>
 						<li>Create a new email to <a href="mailto:posted.communications@gmail.com">posted.communications@gmail.com</a> and copy and paste the data below into that, then send it.</li>
 					</ul>
 					<div id="dev-data"></div>
@@ -181,7 +181,7 @@
 					<p>The following information is collected in the report:</p>
 					<ul>
 						<li>Screen width and height</li>
-						<li>Available screen width and height</li>
+						<li>Available screen width and height (in the browser window)</li>
 						<li>Aspect ratio</li>
 						<li>Aspect ratio of available screen width and height</li>
 						<li>Screen orientation</li>
