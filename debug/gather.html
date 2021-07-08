@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Client Informtation Collection | Posted Support</title>
+	<link rel="icon" href="/resources/favicon.png">
+	<link rel="stylesheet" href="/resources/primary.css">
+   <style>
+      .announcement {
+			background-color: var(--blacker-blue);
+			padding:2%;
+			width:96%;
+			border-radius: 20px;
+		}
+		.info-card {
+			background-color: var(--light-blue);
+			padding:2%;
+			width:96%;
+			border-radius: 20px;
+		}
+		.info-card a {
+			color:var(--light-dark-blue) !important;
+		}
+		.announcement a {
+			color:var(--light-blue) !important;
+		}
+		.info-card *, .announcement * {
+			color:white;
+		}
+		#dev-data{
+			width:96%;
+			padding:2%;
+			border:2px solid var(--blacker-blue);
+			font-size:0.9rem;
+			font-family: monospace, sans-serif;
+			color:black;
+		}
+   </style>
+	<script>
+		var output = {};
+		var input = {};
+		function getStats() {
+			const d = new Date();
+			output = {
+				screen: {
+					width: document.getElementById('width'),
+					aWidth:document.getElementById('awidth'),
+					height: document.getElementById('height'),
+					aHeight: document.getElementById('aheight'),
+					ratio: document.getElementById('aspect-ratio'),
+					aRatio: document.getElementById('a-aspect-ratio'),
+					orientation: document.getElementById('orientation')
+				},
+				device: {
+					browser: document.getElementById('browser'),
+					browserName: document.getElementById('browserName'),
+					deviceType: document.getElementById('deviceType'),
+					online: document.getElementById('online'),
+				},
+				meta: {
+					time: null,
+					date: null
+				}
+			}
+			input = {
+				screen: {
+					width: screen.width,
+					aWidth: screen.availWidth,
+					height: screen.height,
+					aHeight: screen.availHeight,
+					ratio: screen.width / screen.height,
+					aRatio: screen.availWidth / screen.availHeight,
+					orientation: orientation()
+				},
+				device: {
+					browser: navigator.userAgent,
+					browserName: navigator.appName,
+					deviceType: navigator.platform,
+					online: navigator.onLine,
+				},
+				meta: {
+					time: `${d.getUTCHours()}:${d.getUTCMinutes()}:${d.getUTCSeconds()}`,
+					date: `${d.getUTCMonth()}-${d.getUTCDate()}-${d.getUTCFullYear()}`
+				}
+			}
+			return;
+		}
+		
+		function orientation() {
+			if (screen.width > screen.height) {return 'Landscape'}
+			if (screen.width < screen.height) {return 'Landscape'}
+			if (screen.width == screen.height) {return 'Square'}
+		}
+
+		function stats() {
+			var status = document.getElementById('status');
+			status.innerText = 'Gathering data...';
+			getStats();
+			status.innerText = 'Displaying data...'
+			setTimeout(createData(), 500);
+			status.innerText = 'Done!'
+		}
+
+		function createData() {
+			// SCREEN
+			output.screen.width.innerText = input.screen.width;
+			output.screen.aWidth.innerText = input.screen.aWidth;
+			output.screen.height.innerText = input.screen.height;
+			output.screen.aHeight.innerText = input.screen.aHeight;
+			output.screen.ratio.innerText = input.screen.ratio;
+			output.screen.aRatio.innerText = input.screen.aRatio;
+			output.screen.orientation.innerText = input.screen.orientation;
+
+			//DEVICE
+			output.device.browser.innerText = input.device.browser;
+			output.device.browserName.innerText = input.device.browserName;
+			output.device.deviceType.innerText = input.device.deviceType;
+			output.device.online.innerText = input.device.online;
+			
+			document.getElementById('dev-data').innerText =
+			`SCREEN: Width: width:${input.screen.width}px; availWidth:${input.screen.aWidth}px; `+
+			`height:${input.screen.height}px; availHeight:${input.screen.aHeight}px; `+
+			`aspectRatio:${input.screen.ratio}; availableAspectRatio:${input.screen.aRatio}; ` +
+			`orientation:${input.screen.orientation};\r\nDEVICE: `+
+			`browserVersion:${input.device.browser}; browserName:${input.device.browserName};`+
+			`platform:${input.device.deviceType}; online:${input.device.online};`+
+			`\r\nMETA: date:${input.meta.date}; time:${input.meta.time};`
+
+		}
+	</script>
+</head>
+<body onload="setTimeout(() => {stats()}, 1000)">
+   <main>
+      <div class="maincon">
+         <div id="feed">
+            <div class="announcement">
+               <h1>Posted Client Information Collection</h1>
+					<p>This site will gather information about your device to help Posted
+						better optimize and design our sites!<br>
+						The data collection process will begin automatically approximately one second
+						after the page loads. To learn more about our data collection techniques, please see the
+						<a href="#info">"Privacy & Information"</a> section of this page!
+					</p>
+            </div>
+				<div class="info-card" id="report">
+					<h1>Report:</h1>
+					<p><b>Status: </b><span id="status">Starting...</span></p>
+					<br>
+					<h2>Screen Specifications:</h2>
+					<p><b>Width: </b><span id="width"></span>px</p>
+					<p><b>Available Width: </b><span id="awidth"></span>px</p>
+					<p><b>Height: </b><span id="height"></span>px</p>
+					<p><b>Available Height: </b><span id="aheight"></span>px</p>
+					<p><b>Aspect Ratio (W/H): </b><span id="aspect-ratio"></span></p>
+					<p><b>Available Aspect Ratio (W/H): </b><span id="a-aspect-ratio"></span></p>
+					<p><b>Orientation: </b><span id="orientation"></span></p>
+					<h2>Device Specifications:</h2>
+					<p><b>Browser: </b><span id="browser"></span></p>
+					<p><b>Browser Name: </b><span id="browserName"></span></p>
+					<p><b>Device Type (Platform): </b><span id="deviceType"></span></p>
+					<p><b>Connected to Internet (Online): </b><span id="online"></span></p>
+				</div>
+				<div class="info-card">
+					<h1>Developer Information</h1>
+					<p><b>PLEASE SEND THIS DATA TO POSTED!</b></p>
+					<p>Please copy the data below and do one of the following:</p>
+					<ul>
+						<li>Create an issue on the Posted Support GitHub repository using the "Client Information Report" template</li>
+						<li>Create a new email to <a href="mailto:posted.communications@gmail.com">posted.communications@gmail.com</a></li>
+					</ul>
+					<div id="dev-data">
+						
+					</div>
+				</div>
+         </div>
+      </div>
+   </main>
+</body>
+</html>
