@@ -81,7 +81,7 @@
 					height: screen.height,
 					aHeight: window.innerHeight,
 					ratio: screen.width / screen.height,
-					aRatio: screen.availWidth / screen.availHeight,
+					aRatio: window.innerWidth / window.innerHeight,
 					screenOrientation: orientation.screen(),
 					browserOrientation: orientation.browser()
 				},
@@ -130,7 +130,7 @@
 			`height:${input.screen.height}px; availHeight:${input.screen.aHeight}px; `+
 			`aspectRatio:${input.screen.ratio}; availableAspectRatio:${input.screen.aRatio}; ` +
 			`screenOrientation:${input.screen.screenOrientation}; browserOrientation:${input.screen.browserOrientation}\r\nDEVICE: `+
-			`browserVersion:${input.device.browser}; browserName:${input.device.browserName};`+
+			`browserVersion:${input.device.browser}; browserName:${input.device.browserName}; `+
 			`platform:${input.device.deviceType}; online:${input.device.online};`+
 			`\r\nMETA: date:${input.meta.date}; time:${input.meta.time};`
 
@@ -189,7 +189,7 @@
 					<p>The following information is collected in the report:</p>
 					<ul>
 						<li>Screen width and height</li>
-						<li>Available screen width and height (in the browser window)</li>
+						<li>Available screen width and height (width and height of the browser window)</li>
 						<li>Aspect ratio</li>
 						<li>Aspect ratio of available screen width and height</li>
 						<li>Screen orientation</li>
