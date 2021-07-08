@@ -1,8 +1,8 @@
 ---
 name: Client Information Report
 about: Send in data from the Client Information Collection page
-title: Client Information Report -- [YOUR POSTED USERNAME]
-labels: ''
+title: Client Information Report
+labels: 'data-report'
 assignees: ''
 
 ---
