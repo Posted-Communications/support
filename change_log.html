@@ -387,7 +387,7 @@
 				<article id="0-1-13">
 					<h2 class="header">v0.1.13</h2>
 					<h4>July 7, 2021</h4>
-					<h3>Current</h3>
+					<h3>CURRENT</h3>
 					<ul>
 						<li>Refactor stylesheets</li>
 						<li>Better responisveness</li>
@@ -570,8 +570,14 @@
 			notes = document.getElementById(exportNotes);
 		}
 		if (exportNotes != null) {
-			console.log(`Notes: ${notes}`)
-			replacePage(notes)
+			if (notes != null) {
+				console.log(`Notes: ${notes}`)
+				replacePage(notes)
+			} else {
+				setTimeout(() => {
+					alert(`"${exportNotes}" is not a valid version of Posted!\r\nPlease enter a valid version to export update notes for!`)
+				}, 200)
+			}
 		} else {
 			console.log("No notes to export");
 		}
