@@ -108,6 +108,7 @@
 			status.innerText = 'Done!'
 		}
 
+		var devData;
 		function createData() {
 			// SCREEN
 			output.screen.width.innerText = input.screen.width;
@@ -125,15 +126,25 @@
 			output.device.deviceType.innerText = input.device.deviceType;
 			output.device.online.innerText = input.device.online;
 			
-			document.getElementById('dev-data').innerText =
+			//DATA
+			devData =
 			`SCREEN: Width: width:${input.screen.width}px; availWidth:${input.screen.aWidth}px; `+
 			`height:${input.screen.height}px; availHeight:${input.screen.aHeight}px; `+
 			`aspectRatio:${input.screen.ratio}; availableAspectRatio:${input.screen.aRatio}; ` +
-			`screenOrientation:${input.screen.screenOrientation}; browserOrientation:${input.screen.browserOrientation}\r\nDEVICE: `+
+			`screenOrientation:${input.screen.screenOrientation}; browserOrientation:${input.screen.browserOrientation} \x0aDEVICE: `+
 			`browserVersion:${input.device.browser}; browserName:${input.device.browserName}; `+
-			`platform:${input.device.deviceType}; online:${input.device.online};`+
-			`\r\nMETA: date:${input.meta.date}; time:${input.meta.time};`
+			`platform:${input.device.deviceType}; online:${input.device.online}; `+
+			`\x0aMETA: date:${input.meta.date}; time:${input.meta.time};`
 
+			document.getElementById('dev-data').innerHTML = `${devData}<br><br><a onclick="copyLink()">Click to copy to clipboard</a>`;
+			document.getElementById('email').href = `mailto:posted.communications@gmail.com?subject=Client Information Report&body=${devData}`;
+
+
+		}
+
+		function copyLink() {
+			navigator.clipboard.writeText(devData);
+			setTimeout(() => {alert('Copied data to clipboard')});
 		}
 	</script>
 </head>
@@ -175,7 +186,7 @@
 					<p>Please copy the data below and do one of the following:</p>
 					<ul>
 						<li><a href="https://github.com/Posted-Communications/support/issues/new?assignees=&labels=data-report&template=client-information-report.md&title=Client+Information+Report" target="_blank">Create an issue</a> on the Posted Support GitHub repository using the "Client Information Report" template</li>
-						<li>Create a new email to <a href="mailto:posted.communications@gmail.com">posted.communications@gmail.com</a> and copy and paste the data below into that, then send it.</li>
+						<li>Create a new email to <a id="email" href="mailto:posted.communications@gmail.com">posted.communications@gmail.com</a> and copy and paste the data below into that, then send it.</li>
 					</ul>
 					<div id="dev-data"></div>
 				</div>
